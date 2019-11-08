@@ -70,4 +70,22 @@ exports.edit = async (req, res) => {
       image: req.body.image
     }
   })
-} 
+}
+
+exports.delete = async (req, res) => {
+  const customerId = req.params.customerId
+  try {
+    const result = await customers.destroy({
+      where: {
+        id: customerId
+      }
+    })
+    res.send({
+      message: "delete success",
+      result
+    })
+  }
+  catch (error) {
+    res.send(error)
+  }
+}

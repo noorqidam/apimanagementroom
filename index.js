@@ -54,16 +54,17 @@ app.group("/api/v2", (router) => {
 
     // Customers API
     router.get('/customers', customerController.show)
-    router.post('/customers/add', upload.single('image'), customerController.add)
-    // router.put('/customers/edit/:customerId', upload.single('image'), customerController.edit)
-    router.put('/customers/edit/:customerId', customerController.edit)
     router.get('/customers/detail/:customerId', customerController.detail)
+    router.post('/customers/add', upload.single('image'), customerController.add)
+    router.put('/customers/edit/:customerId', customerController.edit)
+    router.delete('/customers/delete/:customerId', customerController.delete)
+    // router.put('/customers/edit/:customerId', upload.single('image'), customerController.edit)
 
     // Rooms API
     router.get('/rooms', roomController.show)
+    router.get('/rooms/detail/:roomId', roomController.detail)
     router.post('/rooms/add', roomController.add)
     router.put('/rooms/edit/:roomId', roomController.edit)
-    router.get('/rooms/detail/:roomId', roomController.detail)
     router.delete('/rooms/delete/:roomId', roomController.delete)
 
     // Orders API
