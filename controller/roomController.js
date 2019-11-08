@@ -5,11 +5,23 @@ const orders = models.orders
 
 exports.show = async (req, res) => {
   const room = await rooms.findAll({
-    attributes: ['id', 'name']
+    attributes: ['id', 'name'],
+    order: [
+      ['id', 'ASC']
+    ]
   })
   res.send({
     data: room
   })
+}
+
+exports.show = async (req, res) => {
+  const result = await customers.findAll({
+    order: [
+      ['id', 'ASC']
+    ]
+  })
+  res.send(result)
 }
 
 exports.add = async (req, res) => {
