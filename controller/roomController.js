@@ -27,24 +27,6 @@ exports.edit = async (req, res) => {
   res.send(result)
 }
 
-exports.delete = async (req, res) => {
-  const roomId = req.params.roomId
-  const result = await rooms.destroy(req.body, { where: { id: roomId } })
-  res.send({
-    message: "success",
-    result
-  })
-}
-
-// exports.delete = (req, res) => {
-//   rooms.destroy({ where: { id: req.params.id } }).then(room => {
-//     res.send({
-//       message: "success",
-//       room
-//     })
-//   })
-// }
-
 exports.detail = async (req, res) => {
   const roomId = req.params.roomId
   const result = await rooms.findOne(
@@ -55,4 +37,22 @@ exports.detail = async (req, res) => {
     }
   )
   res.send(result)
+}
+
+exports.delete = async (req, res) => {
+  const roomId = req.params.roomId
+  try {
+    const result = await rooms.destroy({
+      where: {
+        id: roomId
+      }
+    })
+    res.send({
+      message: "delete success",
+      result
+    })
+  }
+  catch (error) {
+    res.send(error)
+  }
 }
