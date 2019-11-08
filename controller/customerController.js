@@ -54,7 +54,10 @@ exports.edit = async (req, res) => {
     image: req.body.image
   },
     {
-      where: { id: customerId }
+      where: { id: customerId },
+      order: [
+        ['id', 'ASC']
+      ]
     })
   res.send({
     status: 'success',
