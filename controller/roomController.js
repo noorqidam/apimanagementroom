@@ -15,14 +15,14 @@ exports.show = async (req, res) => {
   })
 }
 
-exports.show = async (req, res) => {
-  const result = await customers.findAll({
-    order: [
-      ['id', 'ASC']
-    ]
-  })
-  res.send(result)
-}
+// exports.show = async (req, res) => {
+//   const result = await customers.findAll({
+//     order: [
+//       ['id', 'ASC']
+//     ]
+//   })
+//   res.send(result)
+// }
 
 exports.add = async (req, res) => {
   const data = req.body
