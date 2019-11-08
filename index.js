@@ -55,7 +55,8 @@ app.group("/api/v2", (router) => {
     // Customers API
     router.get('/customers', customerController.show)
     router.post('/customers/add', upload.single('image'), customerController.add)
-    router.put('/customers/edit/:customerId', upload.single('image'), customerController.edit)
+    // router.put('/customers/edit/:customerId', upload.single('image'), customerController.edit)
+    router.put('/customers/edit/:customerId', customerController.edit)
     router.get('/customers/detail/:customerId', customerController.detail)
 
     // Rooms API

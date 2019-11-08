@@ -22,13 +22,36 @@ exports.add = async (req, res) => {
   res.send(result)
 }
 
+// exports.edit = async (req, res) => {
+//   const customerId = req.params.customerId
+//   const result = await customers.update({
+//     name: req.body.name,
+//     id_card: req.body.id_card,
+//     phone_number: req.body.phone_number,
+//     image: ((req.hasOwnProperty('file') == false) ? req.body.prevPic : req.file.path)
+//   },
+//     {
+//       where: { id: customerId }
+//     })
+//   res.send({
+//     status: 'success',
+//     result: {
+//       id: req.params.id,
+//       name: req.body.name,
+//       id_card: req.body.id_card,
+//       phone_number: req.body.phone_number,
+//       image: ((req.hasOwnProperty('file') == false) ? req.body.prevPic : req.file.path)
+//     }
+//   })
+// } 
+
 exports.edit = async (req, res) => {
   const customerId = req.params.customerId
   const result = await customers.update({
     name: req.body.name,
     id_card: req.body.id_card,
     phone_number: req.body.phone_number,
-    image: ((req.hasOwnProperty('file') == false) ? req.body.prevPic : req.file.path)
+    image: req.body.image
   },
     {
       where: { id: customerId }
@@ -40,7 +63,7 @@ exports.edit = async (req, res) => {
       name: req.body.name,
       id_card: req.body.id_card,
       phone_number: req.body.phone_number,
-      image: ((req.hasOwnProperty('file') == false) ? req.body.prevPic : req.file.path)
+      image: req.body.image
     }
   })
 } 
