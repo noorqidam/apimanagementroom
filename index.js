@@ -64,6 +64,7 @@ app.group("/api/v2", (router) => {
     router.post('/rooms/add', roomController.add)
     router.put('/rooms/edit/:roomId', roomController.edit)
     router.get('/rooms/detail/:roomId', roomController.detail)
+    router.delete('/rooms/delete/:roomId', roomController.delete)
 
     // Orders API
     router.get('/orders/checkin', orderController.detail)

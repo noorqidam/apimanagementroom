@@ -27,6 +27,24 @@ exports.edit = async (req, res) => {
   res.send(result)
 }
 
+exports.delete = async (req, res) => {
+  const roomId = req.params.roomId
+  const result = await rooms.destroy(req.body, { where: { id: roomId } })
+  res.send({
+    message: "success",
+    result
+  })
+}
+
+// exports.delete = (req, res) => {
+//   rooms.destroy({ where: { id: req.params.id } }).then(room => {
+//     res.send({
+//       message: "success",
+//       room
+//     })
+//   })
+// }
+
 exports.detail = async (req, res) => {
   const roomId = req.params.roomId
   const result = await rooms.findOne(
