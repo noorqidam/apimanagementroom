@@ -2,7 +2,11 @@ const models = require('../models')
 const customers = models.customers
 
 exports.show = async (req, res) => {
-  const result = await customers.findAll()
+  const result = await customers.findAll({
+    order: [
+      ['id', 'ASC']
+    ]
+  })
   res.send(result)
 }
 
@@ -54,10 +58,7 @@ exports.edit = async (req, res) => {
     image: req.body.image
   },
     {
-      where: { id: customerId },
-      order: [
-        ['id', 'ASC']
-      ]
+      where: { id: customerId }
     })
   res.send({
     status: 'success',
